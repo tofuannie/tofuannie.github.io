@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+	
+	<title>
+		Which type of bubble tea are you? 
+	</title>  
+	
+	<link rel="stylesheet" type="text/css" href="Annie's Quiz CSS.css">
+
+		
+	<style>
+  		/* this style just aligns answers vertically */
+ 		.choice { display: block; }
+	
+	</style>
+
+</head>
+
+<body>
+
+	<script>
+		// <![CDATA[
+		/************************************************************************************
+
+ 		This is how you enter the weights for each possible question / answer / result:
+
+		  q: question #
+		  a: answer #
+		  r: result #
+  
+		for example, q1a2r3 determines how r3's score is affected if a2 is picked for q1
+
+		var weights = [
+ 		 [[q1a1r1, q1a1r2, q1a1r3, ... q1a1r?], [q1a2r1, q1a2r2, ...], [q1a?s1, ...]],
+ 		 [[q2a1r1, q2a1r2, ...], [q2a2r1, ...], [q2a?r1, ...]],
+		  ...
+		  [[q?a1r1, q?a1r2, ...], [q?a2r1, ...], [q?a?r1, ...]]
+		]
+
+		*************************************************************************************/
+
+		/****************
+		WEIGHTS GO BELOW
+		*****************/
+
+		var weights = [
+		
+ 		 // Question 1
+ 		 
+ 		 [ [ 6 , 5 , 6 , 1 , 4 , 2 ] , [ 5 , 3 , 6 , 7 , 7 , 5 ] , [ 4 , 8 , 6 , 10 , 6 , 10 ] , [ 9 , 7 , 10 , 3 , 7 , 4 ] ] ,
+  
+ 		 // Question 2
+ 		 
+ 		 [ [ 0 , 0 , 0 , 0 , 0 , 10 ] , [ 10 , 6 , 1 , 5 , 5 , 0 ] , [ 0 , 10 , 6 , 6 , 6 , 0 ] , [ 0 , 10 , 10 , 0 , 6 , 0 ] , [ 0 , 5 , 0 , 10 , 10 , 0 ] , [ 5 , 10 , 9 , 0 , 5 , 0 ] ] ,
+		 
+		 // Question 3
+ 		 
+ 		 [ [ 0, 10 , 10 , 0 , 10 , 10  ] , [ 2 , 2 , 5 , 0 , 0 , 0] , [ 7 , 10 , 6 , 10 , 10 , 5 ] , [ 9 , 4 , 7 , 1 , 1 , 4 ] , [ 0 , 5 , 0 , 10 , 5, 0 ] , [ 0 , 10 , 0 , 5 , 5 , 0 ] ],
+		 
+		  // Question 4
+ 		 
+ 		  [ [ 0, 10 , 10 , 0 , 10 , 10  ] , [ 2 , 2 , 5 , 0 , 0 , 0] , [ 3 , 1 , 5 , 10 , 5 , 2 ] , [ 0 , 0 , 5 , 0 , 10 , 0 ] , [ 10 , 0 , 0 , 3 , 6 , 0 ] , [ 0 , 0, 0 , 10 , 5 , 0 ] ],
+		  
+		  // Question 5
+ 		 
+ 		 [ [ 5 , 5 , 5 , 5 , 5 , 5 ] , [ 5 , 5 , 5 , 5 , 5 , 5 ] , [ 5 , 5 , 5 , 5 , 5 , 5 ] , [ 5 , 5 , 5 , 5 , 5 , 5 ] , [ 5 , 5 , 5 , 5 , 5 , 5 ] , [ 5 , 5 , 5 , 5 , 5 , 5] ],
+		 
+		 // Question 6
+ 		 
+ 		 [ [ 4 , 10 , 8 , 0 , 0 , 7 ] , [ 4 , 9 , 4 , 4 , 4 , 4 ] , [ 0 , 0 , 0 , 0 , 10 , 0] , [ 10 , 0 , 0 , 0 , 0 , 0 ] , [ 0 , 5 , 0 , 10 , 5 , 0 ] , [ 0 , 5 , 10 , 2 , 0 , 0 ] ],
+		 
+		 // Question 7
+ 		 
+ 		 [ [ 10 , 5 , 8 , 2 , 2 , 5] , [ 6 , 9 , 5 , 9 , 9 , 4 , 7 ] , [ 7 , 10 , 6 , 10 , 10 , 5 , 8 ] , [ 9 , 4 , 7 , 1 , 1 , 4 , 4 ] , [ 0 , 5 , 0 , 10 , 5 , 0 , 5 ] , [ 0 , 10 , 0 , 5 , 5 , 0 , 5 ] ],
+		 
+		  // Question 8
+ 		 
+ 		 [ [ 10 , 10 , 10 , 0 , 0 , 0 ] , [ 2 , 2 , 10 , 4 , 0 , 6 ] , [ 0 , 10 , 10 , 10 , 5 , 5 ] , [ 10 , 0 , 7 , 10 , 1 , 1 ] , [ 5 , 1 , 10 , 5 , 10 , 3 ] , [ 10 , 7 , 7 , 2 , 1 , 0 ] ],
+		 
+		  // Question 9
+ 		 
+ 		 [ [ 10 , 5 , 3 , 0 , 9 , 5 ] , [ 4 , 9 , 5 , 1 , 10 , 2] , [ 7 , 4 , 9 , 0 , 9 , 9 ] , [ 9 , 4 , 0 , 7 , 9 , 3 ] , [ 0 , 5 , 9 , 10 , 3 , 0 ] ],
+		 
+		  // Question 10
+ 		 
+ 		 [ [ 5 , 5 , 5 , 5 , 5 , 5 ] , [ 5 , 5 , 5 , 5 , 5 , 5 , 5 ] , [ 7 , 6 , 5 , 6 , 9 , 8 ] , [ 5 , 5 , 5 , 5 , 5 , 5 ], [ 5 , 5 , 0 , 10 , 5 , 9 ] , [ 2 , 3 , 9, 10 , 6 , 5 ] ]
+		
+		]
+		/*
+		  If you want to see all of the possible results at the same time,
+ 		 (to help you edit your page) modify the following to be:
+ 		 var always_show = true
+  
+ 		 To make the page work properly, it should be:
+ 		 var always_show = false
+		*/
+
+		var always_show = false
+	
+		// ]]>
+	</script>
+	
+		
+	<p>
+		<h1> What type of bubble tea are you? </h1>
+		<h2> 
+		<p>
+			<img src="https://static1.squarespace.com/static/5a0d00510abd044419a46ba7/t/5a163459f9619afa6abc40aa/1511331090603/?format=original" width="300" alt="bbt"]
+		</h2>
+		
+	<ol>
+		<!------------------
+		QUESTIONS GO BELOW
+		------------------!>
+		
+		<!--Question 1--!>
+		
+		<h2>
+		<li>  What is your favourite season? </h2>
+			<h3><label class="choice"> <input type="radio" name="q1" value="a1"/> Winter	</label> 
+			<label class="choice"> <input type="radio" name="q1" value="a2"/> Spring	</label> 
+			<label class="choice"> <input type="radio" name="q1" value="a3"/> Summer	</label> 
+			<label class="choice"> <input type="radio" name="q1" value="a4"/> Fall		</label> </h3>
+	
+						
+<p>		
+		<!--Question 2--!>
+		
+		<h2>
+		<li> Which Asian country do you want to visit the most? </h2>
+			<h3><label class="choice"> <input type="radio" name="q2" value="a1"/> Thailand	</label> 
+			<label class="choice"> <input type="radio" name="q2" value="a2"/> Japan	</label> 
+			<label class="choice"> <input type="radio" name="q2" value="a3"/> Singapore		</label> 
+			<label class="choice"> <input type="radio" name="q2" value="a4"/> Taiwan	</label>
+			<label class="choice"> <input type="radio" name="q2" value="a5"/> Korea			</label>
+			<label class="choice"> <input type="radio" name="q2" value="a6"/> Malaysia		</label></h3>
+
+<p>			
+		<!--Question 3--!>
+		
+		<h2>
+		<li> What food is your favourite? </h2>
+			<h3><label class="choice"> <input type="radio" name="q3" value="a1"/> Ramen	</label> 
+			<label class="choice"> <input type="radio" name="q3" value="a2"/> Sushi	</label> 
+			<label class="choice"> <input type="radio" name="q3" value="a3"/> Dimsum	</label> 
+			<label class="choice"> <input type="radio" name="q3" value="a4"/> Pizza	</label>
+			<label class="choice"> <input type="radio" name="q3" value="a5"/> Pasta			</label>
+			<label class="choice"> <input type="radio" name="q3" value="a6"/> Rice		</label></h3>
+			
+<p>			
+		<!--Question 4--!>
+		
+		<h2>
+		<li> Which topping do you like? </h2>
+			<h3><label class="choice"> <input type="radio" name="q4" value="a1"/> Tapioca	</label> 
+			<label class="choice"> <input type="radio" name="q4" value="a2"/> Herbal Jelly	</label> 
+			<label class="choice"> <input type="radio" name="q4" value="a3"/> Aloe jelly		</label> 
+			<label class="choice"> <input type="radio" name="q4" value="a4"/> Taro	</label>
+			<label class="choice"> <input type="radio" name="q4" value="a5"/> Red bean			</label>
+			<label class="choice"> <input type="radio" name="q4" value="a6"/> No toppings!		</label>
+<p>			
+		<!--Question 5--!>
+		
+		<h2><li> What's your favourite meme?</h2>
+			<h3><label class="choice"> <input type="radio" name="q5" value="a1"/> Surprised Pikachu </label> 
+			<label class="choice"> <input type="radio" name="q5" value="a2"/> Is this a pidgeon?	</label> 
+			<label class="choice"> <input type="radio" name="q5" value="a3"/> Let's get this bread!		</label> 
+			<label class="choice"> <input type="radio" name="q5" value="a4"/> Weird flex, but ok	</label>
+			<label class="choice"> <input type="radio" name="q5" value="a5"/> One taught me love, one taught me patience, one taught me pain		</label>
+			<label class="choice"> <input type="radio" name="q5" value="a6"/> Drake rejection/accepting meme		</label>
+<p>			
+		<!--Question 6--!>
+		
+		<h2><li> Favourite colour? </h2>
+			<h3><label class="choice"> <input type="radio" name="q6" value="a1"/> Mustard Yellow	</label> 
+			<label class="choice"> <input type="radio" name="q6" value="a2"/> Black	</label> 
+			<label class="choice"> <input type="radio" name="q6" value="a3"/> Periwinkle Blue	</label> 
+			<label class="choice"> <input type="radio" name="q6" value="a4"/> Sage Green	</label>
+			<label class="choice"> <input type="radio" name="q6" value="a5"/> Hot Cheetos Red			</label>
+			<label class="choice"> <input type="radio" name="q6" value="a6"/> Bread Brown		</label>
+<p>
+		<!--Question 7--!>
+		
+		<h2><li> Pick a pokemon: </h2>
+			<h3><label class="choice"> <input type="radio" name="q7" value="a1"/> Pikachu	</label> 
+			<label class="choice"> <input type="radio" name="q7" value="a2"/> Meowth	</label> 
+			<label class="choice"> <input type="radio" name="q7" value="a3"/> Piplup		</label> 
+			<label class="choice"> <input type="radio" name="q7" value="a4"/> Charmander	</label>
+			<label class="choice"> <input type="radio" name="q7" value="a5"/> Squirtle		</label>
+			<label class="choice"> <input type="radio" name="q7" value="a6"/> Bulbasaur	</label>
+<p>	
+		<!--Question 8--!>
+		
+		<h2><li> Pick a bubble tea store: </h2>
+			<h3><label class="choice"> <input type="radio" name="q8" value="a1"/> The Alley	</label> 
+			<label class="choice"> <input type="radio" name="q8" value="a2"/> Sharetea	</label> 
+			<label class="choice"> <input type="radio" name="q8" value="a3"/> OneZo Tapioca		</label> 
+			<label class="choice"> <input type="radio" name="q8" value="a4"/> Coco	</label>
+			<label class="choice"> <input type="radio" name="q8" value="a5"/> Chatime		</label>
+			<label class="choice"> <input type="radio" name="q8" value="a6"/> Presotea		</label>
+<p>			
+		<!--Question 9--!>
+		
+		<h2><li> Pick a dessert: </h2>
+			<h3><label class="choice"> <input type="radio" name="q9" value="a1"/> Mochi	</label> 
+			<label class="choice"> <input type="radio" name="q9" value="a2"/> Cheesecake	</label> 
+			<label class="choice"> <input type="radio" name="q9" value="a3"/> Icecream		</label> 
+			<label class="choice"> <input type="radio" name="q9" value="a4"/> Macaroons	</label>
+			<label class="choice"> <input type="radio" name="q9" value="a5"/> Apple pie	</label>
+<p>			
+		<!--Question 10--!>
+		
+		<h2><li> Favourite fruit?</h2>
+			<h3><label class="choice"> <input type="radio" name="q10" value="a1"/> Mango	</label> 
+			<label class="choice"> <input type="radio" name="q10" value="a2"/> Banana	</label> 
+			<label class="choice"> <input type="radio" name="q10" value="a3"/> Lychee		</label> 
+			<label class="choice"> <input type="radio" name="q10" value="a4"/> Strawberry	</label>
+			<label class="choice"> <input type="radio" name="q10" value="a5"/> Melon		</label>
+			<label class="choice"> <input type="radio" name="q10" value="a6"/> Peach		</label>
+	
+	</ol>
+	
+	<p>
+		<!--Submit Button--!> 
+		
+		<button type="button" onclick="select()" class="button" > TELL ME MY RESULTS </button>
+		
+	<div id="incomplete">
+	
+		<p>
+			You have not answered all of the questions yet.
+		
+	</div>
+	
+	<!---------------
+	RESULTS GO BELOW
+	------------------!>
+		
+	<!--Result 1--!>
+		
+	<div id="r1">
+	
+		<p>
+			<h4>
+				<b>You're matcha red bean milk tea!</b>
+				Matcha speaks volumes in terms of sophistication. You're classy, intelligent, and when you set your mind on something you always get it done. You have an impeccable taste in fashion and a fiesty attitude. You may appear to be serious at first glance, but surprise people with your sweet and 'beany' side once you get comfortable with them! uwu
+			</h4>
+		<p>
+			<img src="https://scontent.fyto1-1.fna.fbcdn.net/v/t31.0-8/22520121_753164234871042_715602737068735557_o.jpg?_nc_cat=105&_nc_ht=scontent.fyto1-1.fna&oh=b8396e5c4aa22fbd55431b1556085d8f&oe=5C729C38" width="300" alt="Photo of matcha red bean" class="center"/>
+	
+	</div>
+	
+	<!--Result 2--!>
+	
+	<div id="r2">
+	
+		<p>
+			<h4>
+				<b>You're brown sugar milk tea!</b>
+				You are trendy, sweet and everyone loves you! Your warm personality is like your brown sugar tapioca and everyone can't wait to get to know you. When you aren't the center of attention, you don't mind having some alone-time and keeping in touch with your wholesome, milky roots under all that sugar. uwu
+			</h4>
+		<p>
+			<img src="https://sethlui.com/wp-content/uploads/2018/10/Tiger-Sugar-ONLINE-3-e1539257259295.jpg" width= "400" alt="Photo of bsugar" class="center"/>
+
+	</div>
+	
+	<!--Result 3--!>
+	
+	<div id="r3">
+	
+		<p>
+			<h4>
+				You're pearl milk tea!
+				A classic gem, no one can replace you. You are down to earth, always down to tag friends in memes, and down to have a good time! You don't care about the extra frills, and prefer to stick with what you know makes you happy.
+			</h4>
+		<p>
+			<img src="https://static1.squarespace.com/static/50ce46ece4b01020c34fd52b/t/562063fce4b0feb0d84d155f/1444963324981/?format=750w" width= "400" alt="Photo of pmt" class="center"/>
+
+		
+	</div>
+	
+	<p>
+	
+	<!--Result 4--!>
+	
+	<div id="r4">
+	
+		<p>
+			<h4>
+				You're Grapefruit Yakult!
+				You are chill, refreshing, and a creative individual! You tell things as they are and aren't afraid to spice things up from time to time by taking those risks. Go big or go home!
+			</h4>
+		<p>
+			<img src="https://s3-media4.fl.yelpcdn.com/bphoto/fv2Yl18x2z76CoZWYBUQRA/o.jpg" width= "400" alt="Photo of pmt" class="center"/>
+	</div>
+	
+	<!--Result 5--!>
+	
+	<div id="r5">
+	
+		<p>
+			<h4>
+				You're Taro milk tea!
+				Everyone loves your sense of humour and your good advice. You're always loyal to your friends, and they can depend on you to cheer them up. 
+			</h4>
+		<p>
+			<img src="https://scontent.fybz1-1.fna.fbcdn.net/v/t1.0-9/19989513_1603637659656340_3122149823697915372_n.jpg?_nc_cat=107&_nc_ht=scontent.fybz1-1.fna&oh=295a0a680b586faa485effed09eb6458&oe=5C70C08D" width= "400" alt="Photo of pmt" class="center" />
+			
+	</div>
+	
+	
+	<!--Result 6--!>
+	
+	<div id="r6">
+	
+		<p>
+			<h4>
+				You're Thai milk tea!
+				You love learning about the world, going on adventures, and having fun! You know that you shouldn't take life too seriously but make sure to put your priorities straight.
+			</h4>
+		<p>
+			<img src="https://image.zmenu.com/large/1869786/20150107071041645557.jpg" width= "400" alt="Photo of tmt" class="center"/>
+			
+	</div>
+	
+	<script>
+		// <![CDATA[
+		/**********************************************
+		 Do not edit the following code unless you are comfortable with JavaScript.
+		 **********************************************/
+
+		var verbose = true
+
+		var num_selections = 0
+		while (1) {
+		  var e = document.getElementById('r' + (num_selections + 1))
+		  if (e === null) break
+		  ++num_selections
+		}
+		if (num_selections == 0) window.alert('unexpected: no section ids (r1, r2, etc.)')
+		if (verbose) console.log('num_selections = ' + num_selections)
+	
+		num_questions = 0
+		while (1) {
+		  var e = document.getElementsByName('q' + (num_questions + 1))
+		  if (e.length == 0) break
+		  ++num_questions
+		  if (e.length < 2) window.alert('unexpected: q' + num_questions + ' has less than 2 answers')
+		}
+		if (num_questions == 0) window.alert('unexpected: no question names (q1, q2, etc.)')	
+		if (verbose) console.log('num_questions = ' + num_questions)
+
+		function hide_selections() {
+		  if (!always_show) {
+		    if (verbose) console.log('hide_selections()')
+		    document.getElementById('incomplete').style.display = 'none'
+		    for (var s=1; s <= num_selections; ++s) {
+		      document.getElementById('r' + s).style.display = 'none'
+		    }
+		  }
+		}
+
+		hide_selections()
+
+		function select() {
+		  if (verbose) console.log('select()')
+		  hide_selections()
+		  var incomplete = false  
+		  var scores = new Array(num_selections)
+		  for (var s = 1; s <= num_selections; ++s) scores[s-1] = 0
+		  for (var q = 1; q <= num_questions; ++q) {
+		    var answers = document.getElementsByName('q' + q)
+		    var choice = false
+ 		   for (var a = 0; a < answers.length; ++a) {
+ 		     if (answers[a].checked) {
+ 		       choice = answers[a].value
+ 		       break
+ 		     }
+ 		   }
+ 		   if (choice === false) {
+ 		     incomplete = true
+  		    break
+  		  }
+		    if (verbose) console.log('q' + q + ': answer = ' + choice)
+		    var answer = choice.substr(1)
+		    for (var s = 1; s <= num_selections; ++s) {
+		      var w = weights[q-1][answer-1][s-1]
+ 		     if (typeof w === 'undefined') window.alert('error: could not find weight for q' + q + 'a' + answer + 'r' + s)
+ 		     scores[s-1] += w
+		      if (verbose) console.log('score[' + s + '] += ' + w) 
+		    }
+ 		 }
+		  if (incomplete) {
+ 		   if (verbose) console.log('incomplete')
+ 		   document.getElementById('incomplete').style.display = 'block'
+ 		 } else {
+ 		   var maxscore = Number.MIN_VALUE
+ 		   var pick = 0
+		    for (var s = 1; s <= num_selections; ++s) {
+ 			     if (verbose) console.log('score[' + s + '] == ' + scores[s-1])
+		      if (scores[s-1] > maxscore) {
+ 		       pick = s
+ 		       maxscore = scores[s-1]
+ 		     }
+ 		   }
+ 		   if (verbose) console.log('pick = r' + pick)
+		    document.getElementById('r' + pick).style.display = 'block'
+ 		 }
+		}
+		// ]]>
+	</script>
+	
+</body>
+
+</html>

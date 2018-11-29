@@ -1,0 +1,84 @@
+body {
+	background-image: url("https://i.pinimg.com/originals/60/9e/50/609e501f6424836b2026438a5f166c00.jpg");
+	background-repeat: repeat;
+	background-color: #f2e5d9;
+}
+
+img {
+	border-radius: 50%;
+}
+
+
+h1 {
+	text-align: Center;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 400%;
+	color: ##d2a679;
+	background-color:#a8f0f0;
+	border-style: solid;
+	border-width: 5px;
+	text-shadow: 5px 3px #009999;
+	margin: 160px 300px 20px 300px;
+	padding: 50px;
+	border-radius: 60px;
+	
+}
+
+h2 {
+	font-size: 120%;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	color: black;
+	background-color: #ff6666;
+	border-style: solid;
+	text-align: Center;
+	margin: 5% 20% 5% 20%;
+	border-radius: 60px;
+}
+
+h3 {
+	font-size: 100%;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	background-color:#4ddbff;
+	border-style: solid;
+	text-align: center;
+	margin: 5% 22% 5% 22%;
+	padding-top: 5%;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 5%;
+	border-radius: 5%;
+	
+}
+
+h4 {
+	font-size: 20px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	background-color:#ff6666;
+	border-style: solid;
+	text-align: center;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 25%;
+}
+
+.button {
+	background-color: #ff6666;
+	border-style: solid;
+	color: black;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	padding: 15px 32px;
+	box-shadow: 5px 4px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 25px;
+	border-radius: 8px;
+	margin-left: 35%;
+	
+}
