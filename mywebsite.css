@@ -65,7 +65,9 @@ h5{
 	font-family: 'Open Sans', sans-serif;
 	font-size: 70%;
 }
-
+.highlight {
+	background-color: #ffffcc;
+}
 
 .column-mean {
     float: right;
