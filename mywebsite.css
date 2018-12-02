@@ -50,12 +50,14 @@ h2{
 }
 
 h3 {
-	font-family: 'News Cycle', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 100%;
+	font-style: medium;
 }
 h4 {
 	font-family: 'Roboto', sans-serif;
-	font-size: 130%;
+	font-size: 100%;
+	font-style: bold;
 }
 h5{
 	font-family: 'Open Sans', sans-serif;
