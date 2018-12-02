@@ -39,10 +39,10 @@
 	}
 	
 h1 {
-	font-family: 'Merriweather', serif;
+	font-family: 'domine',serif;
 	font-style: bold;
 	font-size: 550%;
-	text-shadow: 3px 3px #098FA8;
+	color: #000;
 }
 
 h2{
