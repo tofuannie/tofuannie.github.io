@@ -67,6 +67,7 @@ h5{
 }
 .highlight {
 	background-color: #ffffcc;
+	border-style: none;
 }
 
 .column-mean {
