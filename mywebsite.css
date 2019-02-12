@@ -141,6 +141,10 @@ footer {
 	font-style: bold;
 }
 
+.float {
+	float: left;
+}
+
 .accordion {
     background-color: #ffcc00;
     color: #444;
