@@ -39,6 +39,11 @@
 		margin: 1% auto;
 	}
 	
+	.hoverContainer > img:hover {
+  width: 500px;
+  height: 200px;
+}
+	
 h1 {
 	font-family: 'domine',serif;
 	font-style: bold;
