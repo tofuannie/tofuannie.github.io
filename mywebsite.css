@@ -33,6 +33,12 @@
 	margin-top: 40%;
 	
 	}
+	
+@media {max-width: 600px} {
+	.carousel-caption {
+		display: none;
+	}
+}
 
 	#icon {
 		max-width: 200px;
