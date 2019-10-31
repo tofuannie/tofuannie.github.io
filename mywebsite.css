@@ -47,22 +47,22 @@ h1 {
 }
 
 h2{
-	font-family: 'News Cycle', sans-serif;
+	font-family: 'Inconsolata', monospace;
 	font-size: 200%;
 }
 
 h3 {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Inconsolata', monospace;
 	font-size: 120%;
 	font-style: bold;
 }
 h4 {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Inconsolata', monospace;
 	font-size: 120%;
 	font-style: bold;
 }
 h5{
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Inconsolata', monospace;
 	font-size: 70%;
 }
 .highlight {
@@ -155,12 +155,12 @@ footer {
     border: none;
     outline: none;
     transition: 0.4s;
-	font-family:'Open Sans',sans serif;
+	font-family: 'Inconsolata', monospace;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
-    background-color: #ff9900;
+    background-color: #F7E6E2;
 }
 
 /* Style the accordion panel. Note: hidden by default */
