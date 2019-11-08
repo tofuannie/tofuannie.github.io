@@ -71,6 +71,13 @@ h4 {
 	font-family: 'Dosis', sans-serif;
 	font-size: 120%;
 	font-style: bold;
+	background-color:#a8f0f0;
+	border-style: solid;
+	border-width: 5px;
+	text-shadow: 5px 3px #009999;
+	margin: 160px 300px 20px 300px;
+	padding: 50px;
+	border-radius: 60px;
 }
 h5{
 	font-family: 'Inconsolata', monospace;
