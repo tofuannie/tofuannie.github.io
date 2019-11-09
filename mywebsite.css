@@ -55,6 +55,8 @@ h1 {
 	font-style: bold;
 	font-size: 550%;
 	color: #000;
+	background-color:#000;
+	opacity: 50%;
 }
 
 h2{
