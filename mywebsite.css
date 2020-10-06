@@ -1,7 +1,7 @@
 .navbar {
 		margin-bottom:0;
 		border-radius:0;
-		background-color: #ffb7b6;
+		background-color: #000;
 		color: #FFF;
 		padding: 1% 0;
 		font-size: 1.2em;
@@ -30,7 +30,7 @@
 	display: inline-block;
 	font-size: 20px;
 	border-radius: 8px;
-	margin-top: 40%;
+	margin-top: 30%;
 	
 	}
 	
