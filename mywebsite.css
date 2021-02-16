@@ -54,13 +54,15 @@ h1 {
 	font-style: bold;
 	font-size: 550%;
 float: left;
-} <! -- homepage -->
+} 
+<! -- homepage -->
 
 h2{
 	font-family: 'Inconsolata', monospace;
 	font-size: 200%;
 	float: left;
-} <! -- homepage -->
+} 
+<! -- homepage -->
 
 h3 {
 	font-family: 'Inconsolata', monospace;
