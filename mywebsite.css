@@ -54,20 +54,20 @@ h1 {
 	font-style: bold;
 	font-size: 550%;
 float: left;
-}
+} <! -- homepage -->
 
 h2{
 	font-family: 'Inconsolata', monospace;
 	font-size: 200%;
 	float: left;
-}
+} <! -- homepage -->
 
 h3 {
 	font-family: 'Inconsolata', monospace;
 	font-size: 120%;
 	font-style: bold;
-	float: left;
 }
+<! -- accordion body in portfolio page -->
 h4 {
 	font-family: 'Dosis', sans-serif;
 	font-size: 120%;
@@ -76,10 +76,19 @@ h4 {
 	padding: 20px;
 	border-radius: 60px;
 }
+<! -- not sure? -->
 h5{
 	font-family: 'Inconsolata', monospace;
 	font-size: 90%;
 }
+<! -- footer -->
+h6{
+	font-family: 'Inconsolata', monospace;
+	font-size: 120%;
+	font-style: bold;
+}
+<! -- accordion headers in portfolio -->
+
 .highlight {
 	background-color: #ffffcc;
 	border-style: none;
