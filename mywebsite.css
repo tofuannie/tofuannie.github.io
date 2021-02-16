@@ -53,7 +53,7 @@ h1 {
 	font-family: 'domine',serif;
 	font-style: bold;
 	font-size: 550%;
-	
+float: left;
 }
 
 h2{
@@ -66,15 +66,13 @@ h3 {
 	font-family: 'Inconsolata', monospace;
 	font-size: 120%;
 	font-style: bold;
+	float: left;
 }
 h4 {
 	font-family: 'Dosis', sans-serif;
 	font-size: 120%;
 	font-style: bold;
-	
-
 	margin: 5%;
-	
 	padding: 20px;
 	border-radius: 60px;
 }
