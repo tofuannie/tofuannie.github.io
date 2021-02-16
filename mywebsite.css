@@ -82,16 +82,11 @@ h4 {
 }
 
 
-h5{
+h5 {
 	font-family: 'Inconsolata', monospace;
 	font-size: 90%;
 }
 
-h6{
-	font-family: 'Inconsolata', monospace;
-	font-size: 120%;
-	font-style: bold;
-}
 
 
 .highlight {
