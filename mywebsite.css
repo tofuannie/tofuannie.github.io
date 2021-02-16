@@ -66,6 +66,7 @@ h3 {
 	font-family: 'Inconsolata', monospace;
 	font-size: 120%;
 	font-style: bold;
+	float: left;
 }
 <! -- accordion body in portfolio page -->
 h4 {
