@@ -6,6 +6,7 @@
 		padding: 1% 0;
 		font-size: 1.2em;
 		border:0;
+		font-family: 'Alata', sans-serif;
 		}
 	.navbar-brand {
 		float: left;
@@ -65,7 +66,7 @@ h2 {
 
 
 h3 {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Alata', sans-serif;
 	font-size: 120%;
 	float: left;
 }
